@@ -9,9 +9,11 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
-        #map {
-            width: 950px;
-            height: 866px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title></title>
@@ -28,18 +30,18 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/contoursgeographiquesdesdepartements2019_0.js"></script>
+        <script src="data/VariationdelaDGFdesdpartementsentre2019et2020_0.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[40.08100846283618,-6.5501856997276064],[55.003001326401574,9.822556470017759]]);
+        }).fitBounds([[40.39188331416047,-6.083873422741189],[55.31387617772586,10.288868747004177]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        function pop_contoursgeographiquesdesdepartements2019_0(feature, layer) {
+        function pop_VariationdelaDGFdesdpartementsentre2019et2020_0(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Code du département</strong><br />' + (feature.properties['N__DU_D_PA'] !== null ? autolinker.link(feature.properties['N__DU_D_PA'].toLocaleString()) : '') + '</td>\
@@ -69,10 +71,10 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_contoursgeographiquesdesdepartements2019_0_0(feature) {
+        function style_VariationdelaDGFdesdpartementsentre2019et2020_0_0(feature) {
             if (feature.properties['VARIATION_'] >= -28.500000 && feature.properties['VARIATION_'] <= -0.500000 ) {
                 return {
-                pane: 'pane_contoursgeographiquesdesdepartements2019_0',
+                pane: 'pane_VariationdelaDGFdesdpartementsentre2019et2020_0',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -87,7 +89,7 @@
             }
             if (feature.properties['VARIATION_'] >= 0.500000 && feature.properties['VARIATION_'] <= 30.000000 ) {
                 return {
-                pane: 'pane_contoursgeographiquesdesdepartements2019_0',
+                pane: 'pane_VariationdelaDGFdesdpartementsentre2019et2020_0',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -102,7 +104,7 @@
             }
             if (feature.properties['VARIATION_'] >= -0.500000 && feature.properties['VARIATION_'] <= 0.500000 ) {
                 return {
-                pane: 'pane_contoursgeographiquesdesdepartements2019_0',
+                pane: 'pane_VariationdelaDGFdesdpartementsentre2019et2020_0',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -116,20 +118,22 @@
             }
             }
         }
-        map.createPane('pane_contoursgeographiquesdesdepartements2019_0');
-        map.getPane('pane_contoursgeographiquesdesdepartements2019_0').style.zIndex = 400;
-        map.getPane('pane_contoursgeographiquesdesdepartements2019_0').style['mix-blend-mode'] = 'normal';
-        var layer_contoursgeographiquesdesdepartements2019_0 = new L.geoJson(json_contoursgeographiquesdesdepartements2019_0, {
+        map.createPane('pane_VariationdelaDGFdesdpartementsentre2019et2020_0');
+        map.getPane('pane_VariationdelaDGFdesdpartementsentre2019et2020_0').style.zIndex = 400;
+        map.getPane('pane_VariationdelaDGFdesdpartementsentre2019et2020_0').style['mix-blend-mode'] = 'normal';
+        var layer_VariationdelaDGFdesdpartementsentre2019et2020_0 = new L.geoJson(json_VariationdelaDGFdesdpartementsentre2019et2020_0, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_contoursgeographiquesdesdepartements2019_0',
-            layerName: 'layer_contoursgeographiquesdesdepartements2019_0',
-            pane: 'pane_contoursgeographiquesdesdepartements2019_0',
-            onEachFeature: pop_contoursgeographiquesdesdepartements2019_0,
-            style: style_contoursgeographiquesdesdepartements2019_0_0,
+            dataVar: 'json_VariationdelaDGFdesdpartementsentre2019et2020_0',
+            layerName: 'layer_VariationdelaDGFdesdpartementsentre2019et2020_0',
+            pane: 'pane_VariationdelaDGFdesdpartementsentre2019et2020_0',
+            onEachFeature: pop_VariationdelaDGFdesdpartementsentre2019et2020_0,
+            style: style_VariationdelaDGFdesdpartementsentre2019et2020_0_0,
         });
-        bounds_group.addLayer(layer_contoursgeographiquesdesdepartements2019_0);
-        map.addLayer(layer_contoursgeographiquesdesdepartements2019_0);
+        bounds_group.addLayer(layer_VariationdelaDGFdesdpartementsentre2019et2020_0);
+        map.addLayer(layer_VariationdelaDGFdesdpartementsentre2019et2020_0);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Variation de la DGF des départements entre 2019 et 2020<br /><table><tr><td style="text-align: center;"><img src="legend/VariationdelaDGFdesdpartementsentre2019et2020_0_Inférieureà050.png" /></td><td>Inférieure à - 0,5%</td></tr><tr><td style="text-align: center;"><img src="legend/VariationdelaDGFdesdpartementsentre2019et2020_0_Supérieureà051.png" /></td><td>Supérieure à +0.5%</td></tr><tr><td style="text-align: center;"><img src="legend/VariationdelaDGFdesdpartementsentre2019et2020_0_Entre05et052.png" /></td><td>Entre -0,5% et +0,5%</td></tr></table>': layer_VariationdelaDGFdesdpartementsentre2019et2020_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>
